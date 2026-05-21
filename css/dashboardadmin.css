@@ -1,0 +1,230 @@
+/* --- HSL Variables & Typographic Scale --- */
+:root {
+    --hue-primary: 152;
+    --color-primary: hsl(var(--hue-primary), 55%, 45%);
+    --color-primary-light: hsl(var(--hue-primary), 60%, 90%);
+    
+    --color-navy: hsl(220, 50%, 20%);
+    --color-soft-blue: hsl(220, 20%, 96%);
+    --color-white: hsl(0, 0%, 100%);
+    --color-text-muted: hsl(220, 10%, 45%);
+    --color-border: hsl(220, 15%, 90%);
+
+    /* Status Colors Mapping */
+    --status-success: hsl(145, 65%, 40%);
+    --status-success-light: hsl(145, 65%, 90%);
+    --status-warning: hsl(45, 90%, 45%);
+    --status-warning-light: hsl(45, 90%, 90%);
+    --status-error: hsl(0, 75%, 50%);
+
+    --font-sans: 'Inter', 'Segoe UI', sans-serif;
+    --radius-lg: 16px;
+    --radius-md: 12px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-soft-blue);
+    color: var(--color-navy);
+}
+
+/* --- Utility Classes --- */
+.text-success { color: var(--status-success); }
+.text-warning { color: var(--status-warning); }
+.text-primary { color: var(--color-primary); }
+
+.success-light { background-color: var(--status-success-light); }
+.warning-light { background-color: var(--status-warning-light); }
+.primary-light { background-color: var(--color-primary-light); }
+
+/* --- Mobile-First Layout Structure --- */
+.dashboard-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Sidebar hidden on mobile */
+.sidebar { display: none; }
+
+.main-content {
+    flex: 1;
+    padding-bottom: 70px; /* Space for bottom nav */
+}
+
+/* --- Top Navbar --- */
+.top-navbar {
+    background-color: var(--color-white);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.mobile-brand { display: flex; align-items: center; gap: 0.5rem; }
+.mobile-brand h1 { font-size: 1.1rem; font-weight: 700; }
+.logo-icon {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    width: 28px; height: 28px;
+    display: flex; justify-content: center; align-items: center;
+    border-radius: 6px; font-weight: bold; font-size: 0.9rem;
+}
+
+.header-actions { display: flex; align-items: center; gap: 1rem; }
+.notification-btn {
+    background: none; border: none; font-size: 1.2rem; position: relative; cursor: pointer;
+}
+.badge {
+    position: absolute; top: -5px; right: -5px;
+    background-color: var(--status-error); color: var(--color-white);
+    font-size: 0.6rem; padding: 2px 5px; border-radius: 10px; font-weight: bold;
+}
+.profile-avatar {
+    background-color: var(--color-primary-light); color: var(--color-primary);
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center; font-weight: bold;
+}
+
+/* --- Content Area --- */
+.content-wrapper { padding: 1.5rem 1rem; display: flex; flex-direction: column; gap: 1.5rem; }
+
+.greeting-section p { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 0.2rem;}
+.greeting-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+.greeting-header h2 { font-size: 1.4rem; font-weight: 700; line-height: 1.3;}
+.date-filter {
+    padding: 0.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-md);
+    background-color: var(--color-white); color: var(--color-navy); font-size: 0.85rem; outline: none;
+}
+
+/* --- Summary Cards (CSS Grid) --- */
+.summary-cards {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile: 1 column */
+    gap: 1rem;
+}
+.card {
+    background-color: var(--color-white); padding: 1.25rem;
+    border-radius: var(--radius-lg); border: 1px solid var(--color-border);
+    display: flex; align-items: flex-start; gap: 1rem;
+}
+.card-icon {
+    width: 45px; height: 45px; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center; font-size: 1.2rem; flex-shrink: 0;
+}
+.card-title { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0.25rem; font-weight: 500;}
+.card-value { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.25rem;}
+.card-trend { font-size: 0.75rem; font-weight: 600;}
+
+/* --- Chart Section --- */
+.chart-section {
+    background-color: var(--color-white); padding: 1.25rem;
+    border-radius: var(--radius-lg); border: 1px solid var(--color-border);
+}
+.chart-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+.chart-header h3 { font-size: 1.1rem; margin-bottom: 0.2rem;}
+.chart-subtitle { font-size: 0.85rem; color: var(--color-text-muted); }
+.chart-badge {
+    background-color: var(--status-success-light); color: var(--status-success);
+    padding: 0.3rem 0.6rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+}
+.chart-container { position: relative; height: 200px; width: 100%; }
+
+/* --- Activity Section --- */
+.activity-section {
+    background-color: var(--color-white); padding: 1.25rem;
+    border-radius: var(--radius-lg); border: 1px solid var(--color-border);
+}
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;}
+.view-all { font-size: 0.85rem; text-decoration: none; font-weight: 600;}
+.activity-list { display: flex; flex-direction: column; gap: 1rem; }
+.activity-item { display: flex; align-items: center; gap: 1rem; }
+.activity-icon {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center; font-size: 1.1rem; flex-shrink: 0;
+}
+.activity-details { flex: 1; }
+.activity-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; color: var(--color-navy);}
+.activity-meta { font-size: 0.8rem; color: var(--color-text-muted); }
+.activity-time { font-size: 0.8rem; color: var(--color-text-muted); font-weight: 500;}
+
+/* --- Mobile Bottom Nav --- */
+.bottom-nav {
+    position: fixed; bottom: 0; left: 0; width: 100%;
+    background-color: var(--color-white); border-top: 1px solid var(--color-border);
+    display: flex; justify-content: space-around; padding: 0.75rem 0; z-index: 20;
+}
+.bottom-nav .nav-item {
+    display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+    color: var(--color-text-muted); text-decoration: none; font-size: 0.7rem; font-weight: 500;
+}
+.bottom-nav .nav-item.active { color: var(--status-success); }
+.bottom-nav .nav-item .icon { font-size: 1.2rem; }
+
+/* =========================================
+   MEDIA QUERIES - RESPONSIVE (TABLET & DESKTOP) 
+   ========================================= */
+
+/* Tablet Layout */
+@media (min-width: 640px) {
+    .summary-cards { grid-template-columns: repeat(2, 1fr); /* 2x2 grid */ }
+}
+
+/* Desktop Layout (Mengimplementasikan Sidebar sesuai Requirement) */
+@media (min-width: 1024px) {
+    .dashboard-layout {
+        flex-direction: row; /* Ubah layout jadi horizontal */
+    }
+
+    /* Sembunyikan elemen mobile */
+    .bottom-nav { display: none; }
+    .mobile-brand { display: none; }
+
+    /* Tampilkan & Format Sidebar */
+    .sidebar {
+        display: flex; flex-direction: column;
+        width: 260px; background-color: var(--color-white);
+        border-right: 1px solid var(--color-border);
+        height: 100vh; position: sticky; top: 0; padding: 1.5rem;
+    }
+    
+    .sidebar-logo {
+        display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2.5rem;
+        color: var(--color-primary);
+    }
+    .sidebar-logo h2 { font-size: 1.4rem; font-weight: 700; }
+    
+    .sidebar-nav { display: flex; flex-direction: column; gap: 0.5rem; }
+    .sidebar-nav .nav-item {
+        display: flex; align-items: center; gap: 1rem;
+        padding: 0.85rem 1rem; border-radius: var(--radius-md);
+        color: var(--color-text-muted); text-decoration: none; font-weight: 600; transition: 0.2s;
+    }
+    .sidebar-nav .nav-item:hover { background-color: var(--color-soft-blue); }
+    .sidebar-nav .nav-item.active {
+        background-color: var(--status-success-light); color: var(--status-success);
+    }
+
+    /* Format Main Content di Desktop */
+    .main-content { padding-bottom: 0; }
+    .top-navbar { justify-content: flex-end; /* Karena logo pindah ke sidebar */ padding: 1.5rem 2rem; }
+    .content-wrapper { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+    .summary-cards { grid-template-columns: repeat(4, 1fr); /* 4 kolom sejajar */ }
+    
+    /* Layout bawah (Grafik & Aktivitas bersebelahan) */
+    .content-wrapper {
+        display: grid;
+        grid-template-columns: 2fr 1fr; /* Grafik lebih lebar dari Aktivitas */
+        grid-template-rows: auto auto auto;
+    }
+    .greeting-section { grid-column: 1 / -1; }
+    .summary-cards { grid-column: 1 / -1; }
+    .chart-section { grid-column: 1 / 2; }
+    .activity-section { grid-column: 2 / 3; }
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KantinKu - Dashboard Admin</title>
+    <link rel="stylesheet" href="../css/admin-dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-layout">
+        
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-icon">A</span>
+                <h2>KantinKu</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active"><span class="icon">🏠</span> Dashboard</a>
+                <a href="#" class="nav-item"><span class="icon">📋</span> Operasional</a>
+                <a href="#" class="nav-item"><span class="icon">🔔</span> Status Pesanan</a>
+                <a href="#" class="nav-item"><span class="icon">👤</span> Akun</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-navbar">
+                <div class="mobile-brand">
+                    <span class="logo-icon">A</span>
+                    <h1>Dashboard Admin</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="notification-btn" aria-label="Notifikasi">
+                        🔔 <span class="badge">3</span>
+                    </button>
+                    <div class="profile-avatar">AD</div>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <div class="greeting-section">
+                    <p>Selamat pagi, <strong>Admin</strong> 👋</p>
+                    <div class="greeting-header">
+                        <h2>Pantau operasional kantin Anda hari ini</h2>
+                        <select class="date-filter">
+                            <option value="today">📅 Hari ini</option>
+                            <option value="week">📅 Minggu ini</option>
+                        </select>
+                    </div>
+                </div>
+
+                <section class="summary-cards">
+                    <div class="card card-revenue">
+                        <div class="card-icon success-light">💲</div>
+                        <div class="card-info">
+                            <p class="card-title">Pendapatan Hari Ini</p>
+                            <h3 class="card-value text-success">Rp3.450.000</h3>
+                            <p class="card-trend text-success">↑ 12,5% dari kemarin</p>
+                        </div>
+                    </div>
+                    <div class="card card-orders">
+                        <div class="card-icon primary-light">🛎️</div>
+                        <div class="card-info">
+                            <p class="card-title">Pesanan Aktif</p>
+                            <h3 class="card-value text-primary">128</h3>
+                            <p class="card-trend text-primary">8 pesanan diproses</p>
+                        </div>
+                    </div>
+                    <div class="card card-users">
+                        <div class="card-icon primary-light">👥</div>
+                        <div class="card-info">
+                            <p class="card-title">Total Pengguna</p>
+                            <h3 class="card-value text-success">256</h3>
+                            <p class="card-trend text-success">24 baru bulan ini</p>
+                        </div>
+                    </div>
+                    <div class="card card-pending">
+                        <div class="card-icon warning-light">⏳</div>
+                        <div class="card-info">
+                            <p class="card-title">Menunggu Persetujuan</p>
+                            <h3 class="card-value">14</h3>
+                            <p class="card-trend text-warning">Menu & Akun</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="chart-section">
+                    <div class="chart-header">
+                        <div>
+                            <h3>Penjualan 7 Hari Terakhir</h3>
+                            <p class="chart-subtitle"><strong>Rp18.750.000</strong> <span class="text-success">↑ 15,8%</span> vs 7 hari lalu</p>
+                        </div>
+                        <div class="chart-badge">7 Hari</div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                </section>
+
+                <section class="activity-section">
+                    <div class="section-header">
+                        <h3>Aktivitas Terbaru</h3>
+                        <a href="#" class="view-all text-success">Lihat semua</a>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon success-light">🛒</div>
+                            <div class="activity-details">
+                                <p class="activity-title">Pesanan baru #A027 diterima</p>
+                                <p class="activity-meta">Meja A02 • Rp45.000</p>
+                            </div>
+                            <span class="activity-time">09:42</span>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon warning-light">📄</div>
+                            <div class="activity-details">
+                                <p class="activity-title">Menu "Korean Beef" menunggu persetujuan</p>
+                                <p class="activity-meta">Ditambahkan oleh Chef Budi</p>
+                            </div>
+                            <span class="activity-time">09:15</span>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon success-light">💵</div>
+                            <div class="activity-details">
+                                <p class="activity-title">Transaksi berhasil</p>
+                                <p class="activity-meta">Meja B12 • Rp120.000</p>
+                            </div>
+                            <span class="activity-time">08:30</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active">
+                <span class="icon">🏠</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="icon">📋</span>
+                <span>Operasional</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="icon">🔔</span>
+                <span>Status</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="icon">👤</span>
+                <span>Akun</span>
+            </a>
+        </nav>
+
+    </div>
+    <script src="../javascript/admin-dashboard.js"></script>
+</body>
+</html>
